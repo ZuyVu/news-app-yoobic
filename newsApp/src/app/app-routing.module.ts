@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
-  {
-    path: 'headlines',
-    loadChildren: () => import('./pages/headlines/headlines.module').then( m => m.HeadlinesPageModule)
-  },
-  {
-    path: 'article',
-    loadChildren: () => import('./pages/article/article.module').then( m => m.ArticlePageModule)
-  },
+  // Lazy Loading
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+    loadChildren: './pages/auth/auth.module#AuthPageModule'
   },
+  {
+    path: 'headlines',
+    loadChildren: './pages/headlines/headlines.module#HeadlinesPageModule',
+    canLoad: [AuthGuard] // Only allow this page to load if AuthGuard.canLoad returns true
+  },
+  {
+    path: 'article/:id',
+    loadChildren: './pages/article/article.module#ArticlePageModule',
+    canLoad: [AuthGuard] // Only allow this page to load if AuthGuard.canLoad returns true
+  },
+
 ];
 
 @NgModule({
