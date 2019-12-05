@@ -16,4 +16,8 @@ export class ArticlePage implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.article = this.newsService.getData(id);
   }
+
+  openUrl() {
+    window.open(this.article.url, '_blank');
+  }
 }
