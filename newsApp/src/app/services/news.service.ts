@@ -9,7 +9,7 @@ export class NewsService {
   private data = [];
   constructor() { }
 
-  fetchHeadlinesNews(country: string) {
+  fetchHeadlinesNews(country: string): any {
     const url = 'https://newsapi.org/v2/top-headlines?' +
           'country=us&' +
           'apiKey=f7368915fb624144b95da6ee35409843';
