@@ -19,9 +19,6 @@ export class NewsService {
         .then((response) => response.json());
   }
 
-
-
-
   setData(data: any) {
     this.data = data;
   }
