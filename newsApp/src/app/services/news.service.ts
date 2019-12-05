@@ -18,9 +18,15 @@ export class NewsService {
         .then((response) => response.json())
         .then(data => {
           this.setData(data.articles);
-          return data.articles;
+
         });
+    console.log("GOT HERE");
+    console.log(this.data);
+    return this.data;
   }
+
+
+
 
   setData(data: any) {
     this.data = data;

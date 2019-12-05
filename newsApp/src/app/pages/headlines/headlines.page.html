@@ -5,25 +5,23 @@
       <ion-menu-button></ion-menu-button>
     </ion-button>
 
-    <ion-title>Movies Search</ion-title>
+    <ion-title>Headlines</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <ion-searchbar [(ngModel)]="searchField" (ionChange)="searchChanged($event)"></ion-searchbar> -->
 
-  <!-- <ion-card button *ngFor="let item of (results | async)" [routerLink]="['/movies', item.imdbID]"> -->
-  <ion-card button *ngFor="let item of (news)" [routerLink]="['/movies', item.url]">
+  <ion-card button *ngFor="let item of (news)" [routerLink]="['/article', item.url]">
     
     <img [src]="item.urlToImage" *ngIf="item.urlToImage != 'N/A'">
 
     <ion-card-header>
       <ion-card-title>{{ item.title }}</ion-card-title>
-      <!-- <ion-card-subtitle>{{ item.PublishedAt }}</ion-card-subtitle> -->
+      <!-- <ion-card-subtitle>{{ item.publishedAt }}</ion-card-subtitle> -->
 
     </ion-card-header>
     <ion-card-content>
-      {{item.content}}
+      <!-- {{item.content}} -->
     </ion-card-content>
   
   </ion-card>
