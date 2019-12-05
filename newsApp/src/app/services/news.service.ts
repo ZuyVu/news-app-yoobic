@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +10,13 @@ export class NewsService {
   private data = [];
   constructor() { }
 
-  fetchHeadlinesNews(country: string): any {
+  fetchHeadlinesNews(country: string): Promise<any> {
     const url = 'https://newsapi.org/v2/top-headlines?' +
           'country=us&' +
           'apiKey=f7368915fb624144b95da6ee35409843';
     const req = new Request(url);
-    fetch(req)
-        .then((response) => response.json())
-        .then(data => {
-          this.setData(data.articles);
-
-        });
-    console.log("GOT HERE");
-    console.log(this.data);
-    return this.data;
+    return fetch(req)
+        .then((response) => response.json());
   }
 
 
