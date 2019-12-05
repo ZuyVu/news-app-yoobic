@@ -19,7 +19,7 @@ export class AuthPage implements OnInit {
   onLogin() {
     this.authService.login();
     // Navigate user to movies page
-    this.router.navigateByUrl('/movies');
+    this.router.navigateByUrl('/headlines');
   }
 
   onSubmit(form: NgForm) {
