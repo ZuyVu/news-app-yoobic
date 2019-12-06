@@ -1,3 +1,51 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu side="start">
+
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>News to You</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item line="none" routerLink="/headlines">
+            <ion-icon name="paper" slot="start"></ion-icon>
+            <ion-label>Headlines</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item line="none" (click)='onClickDummyButton()' button>
+            <ion-icon name="trending-up" slot="start"></ion-icon>
+            <ion-label>Trending</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item line="none" (click)='onClickDummyButton()' button>
+            <ion-icon name="flame" slot="start"></ion-icon>
+            <ion-label>Super Hot News</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item line="none" (click)='onClickDummyButton()' button>
+            <ion-icon name="flash" slot="start"></ion-icon>
+            <ion-label>Some Awesome Feature</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item line="none" (click)="onLogOut()" button>
+            <ion-icon name="exit" slot="end"></ion-icon>
+            <ion-label>LogOut</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
