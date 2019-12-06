@@ -35,6 +35,7 @@ export class AuthPage implements OnInit {
     } else {
       // Send Signup request
     }
+    this.onLogin();
   }
 
   onSwitchAuthMode() {

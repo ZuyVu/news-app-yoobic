@@ -9,23 +9,27 @@ import { Observable } from 'rxjs';
 })
 export class HeadlinesPage implements OnInit {
   country = 'gb'; // Default country is UK
-  news = [];
+  news: Observable<any>;
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.newsService.fetchHeadlinesNews(this.country)
-    .then(data => {
-      this.news = data.articles;
-      this.newsService.setData(data.articles);
-    });
+    // this.newsService.fetchHeadlinesNews(this.country)
+    // .then(data => {
+    //   this.news = data.articles;
+    //   this.newsService.setData(data.articles);
+    // });
+
+    this.news = this.newsService.fetchWithHttp(this.country);
+
   }
 
   changeCountry() {
-    this.newsService.fetchHeadlinesNews(this.country)
-    .then(data => {
-      this.news = data.articles;
-      this.newsService.setData(data.articles);
-    });
+    this.news = this.newsService.fetchWithHttp(this.country);
+    // this.newsService.fetchHeadlinesNews(this.country)
+    // .then(data => {
+    //   this.news = data.articles;
+    //   this.newsService.setData(data.articles);
+    // });
   }
 
 }

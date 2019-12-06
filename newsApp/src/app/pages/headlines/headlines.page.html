@@ -10,31 +10,45 @@
 
 <ion-content>
 
-    <ion-item>
-      <ion-label>Select Country</ion-label>
-      <ion-select [(ngModel)]="country" (ionChange)="changeCountry($event)">
-        <ion-select-option value="us">United States</ion-select-option>
-        <ion-select-option value="gb">United Kingdom</ion-select-option>
-        <ion-select-option value="fr">France</ion-select-option>
-        <ion-select-option value="jp">Japan</ion-select-option>
-        <ion-select-option value="hk">Hong Kong</ion-select-option>
-      </ion-select>
-    </ion-item>
+  <ion-refresher slot="fixed" (ionRefresh)="changeCountry($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-  <ion-card button *ngFor="let item of (news)" [routerLink]="['/article', item.url]">
-    
-    <img [src]="item.urlToImage" *ngIf="item.urlToImage != 'N/A'">
-
-    <ion-card-header>
-      <ion-card-title>{{ item.title }}</ion-card-title>
-      <!-- <ion-card-subtitle>{{ item.publishedAt }}</ion-card-subtitle> -->
-
-    </ion-card-header>
-    <ion-card-content>
-      <!-- {{item.content}} -->
-    </ion-card-content>
-  
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label>Select Country</ion-label>
+          <ion-select [(ngModel)]="country" (ionChange)="changeCountry($event)">
+            <ion-select-option value="us">United States</ion-select-option>
+            <ion-select-option value="gb">United Kingdom</ion-select-option>
+            <ion-select-option value="fr">France</ion-select-option>
+            <ion-select-option value="jp">Japan</ion-select-option>
+            <ion-select-option value="hk">Hong Kong</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <!-- <ion-card button *ngFor="let item of (news)" [routerLink]="['/article', item.url]"> -->
+        <ion-card button *ngFor="let item of (news | async)" [routerLink]="['/article', item.url]">
+        
+          <img [src]="item.urlToImage" *ngIf="item.urlToImage != 'N/A'">
+        
+          <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+            <!-- <ion-card-subtitle>{{ item.publishedAt }}</ion-card-subtitle> -->
+        
+          </ion-card-header>
+          <ion-card-content>
+            <!-- {{item.content}} -->
+          </ion-card-content>
+        
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
     
   
 </ion-content>
