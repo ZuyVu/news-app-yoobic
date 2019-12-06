@@ -12,7 +12,7 @@ export class NewsService {
 
   fetchHeadlinesNews(country: string): Promise<any> {
     const url = 'https://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
+          'country=' + country + '&' +
           'apiKey=f7368915fb624144b95da6ee35409843';
     const req = new Request(url);
     return fetch(req)

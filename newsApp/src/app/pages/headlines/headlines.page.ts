@@ -8,11 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./headlines.page.scss'],
 })
 export class HeadlinesPage implements OnInit {
-  private country = 'us';
+  country = 'gb'; // Default country is UK
   news = [];
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.newsService.fetchHeadlinesNews(this.country)
+    .then(data => {
+      this.news = data.articles;
+      this.newsService.setData(data.articles);
+    });
+  }
+
+  changeCountry() {
     this.newsService.fetchHeadlinesNews(this.country)
     .then(data => {
       this.news = data.articles;

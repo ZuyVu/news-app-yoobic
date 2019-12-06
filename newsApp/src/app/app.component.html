@@ -3,7 +3,7 @@
   <ion-menu side="start">
 
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="primary">
         <ion-title>News to You</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -12,26 +12,26 @@
       <ion-list>
         <ion-menu-toggle>
           <ion-item line="none" routerLink="/headlines">
-            <ion-icon name="paper" slot="start"></ion-icon>
+            <ion-icon name="paper" slot="start" color="danger"></ion-icon>
             <ion-label>Headlines</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item line="none" (click)='onClickDummyButton()' button>
-            <ion-icon name="trending-up" slot="start"></ion-icon>
+            <ion-icon name="trending-up" slot="start" color="secondary"></ion-icon>
             <ion-label>Trending</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item line="none" (click)='onClickDummyButton()' button>
-            <ion-icon name="flame" slot="start"></ion-icon>
+            <ion-icon name="flame" slot="start" color="tertiary"></ion-icon>
             <ion-label>Super Hot News</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item line="none" (click)='onClickDummyButton()' button>
-            <ion-icon name="flash" slot="start"></ion-icon>
-            <ion-label>Some Awesome Feature</ion-label>
+            <ion-icon name="flash" slot="start" color="primary"></ion-icon>
+            <ion-label>More Awesome Features</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
