@@ -19,17 +19,28 @@ export class HeadlinesPage implements OnInit {
     //   this.newsService.setData(data.articles);
     // });
 
-    this.news = this.newsService.fetchWithHttp(this.country);
+    this.getNews();
 
   }
 
-  changeCountry() {
+  getNews() {
     this.news = this.newsService.fetchWithHttp(this.country);
-    // this.newsService.fetchHeadlinesNews(this.country)
-    // .then(data => {
-    //   this.news = data.articles;
-    //   this.newsService.setData(data.articles);
-    // });
+    this.news.subscribe((data) => {
+      console.log(data);
+      this.newsService.setData(data);
+    });
   }
+
+  doRefresh(event) {
+    this.getNews();
+    setTimeout(() => {
+      event.target.complete();
+    }, 2000);
+
+  }
+
+  // onRefresh(event) {
+
+  // }
 
 }
