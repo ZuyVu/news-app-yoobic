@@ -19,7 +19,9 @@ const routes: Routes = [
     loadChildren: './pages/article/article.module#ArticlePageModule',
     canLoad: [AuthGuard] // Only allow this page to load if AuthGuard.canLoad returns true
   },
-
+  {
+    path: '**', redirectTo: 'auth', pathMatch: 'full'
+  },
 ];
 
 @NgModule({
