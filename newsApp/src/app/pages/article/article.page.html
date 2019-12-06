@@ -14,31 +14,32 @@
       <ion-card-title>
         {{ article.title }}
       </ion-card-title>
-      <ion-card-subtitle>
+      <ion-card-subtitle *ngIf="article.author">
         By {{ article.author }}
       </ion-card-subtitle>
       <ion-card-subtitle>
         Published at {{ article.publishedAt }}
       </ion-card-subtitle>
+      <ion-card-subtitle>
+        <ion-label>{{ article.description }}</ion-label>
+      </ion-card-subtitle>
+
+      <img [src]="article.urlToImage" *ngIf="article.urlToImage != 'N/A'" class="info-img">
+
     </ion-card-header>
-      <ion-card-content text-center>
+    <ion-card-content>
 
-        <ion-item>
-          <ion-label>{{ article.description }}</ion-label>
-        </ion-item>
 
-        <img [src]="article.urlToImage" *ngIf="article.urlToImage != 'N/A'" class="info-img">
+      <p class="ion-text-start">
+      {{ article.content }}
+      </p>
+      
+      <ion-button expand="full" (click)="openUrl()" *ngIf="article.url && article.url != 'N/A'">
+        <ion-icon name="open" slot="start"></ion-icon>
+        Read More...
+      </ion-button>
 
-        <div class="ion-text-start">
-        {{ article.content }}
-        </div>
-        
-        <ion-button expand="full" (click)="openUrl()" *ngIf="article.url && article.url != 'N/A'">
-          <ion-icon name="open" slot="start"></ion-icon>
-          Read More...
-        </ion-button>
-
-      </ion-card-content>
-    </ion-card>
-    
-  </ion-content>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
