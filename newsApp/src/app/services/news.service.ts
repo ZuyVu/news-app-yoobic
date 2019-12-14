@@ -7,50 +7,48 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NewsService {
-  // private url = 'https://newsapi.org/v2/top-headlines';
-  // private key = ;
+  private endpoint = 'https://newsapi.org/v2/top-headlines?';
+  private key = 'f7368915fb624144b95da6ee35409843';
   private data = [];
   constructor(private http: HttpClient) { }
 
-  fetchHeadlinesNews(country: string): Promise<any> {
-    const url = 'https://newsapi.org/v2/top-headlines?' +
-          'country=' + country + '&' +
-          'apiKey=f7368915fb624144b95da6ee35409843';
-    const req = new Request(url);
-    return fetch(req)
-        .then((response) => response.json());
-  }
-
+  // Fetch using httpClientModule & return an observable
   fetchWithHttp(country: string): Observable<any> {
-    const url = 'https://newsapi.org/v2/top-headlines?' +
+    const url = this.endpoint +
       'country=' + country + '&' +
-      'apiKey=f7368915fb624144b95da6ee35409843';
-
-    // this.http
-    //   .get(url)
-    //   .pipe(tap(res =>))
+      'apiKey=' + this.key;
 
     return this.http
               .get(url)
               .pipe(map(results => results['articles']));
+  }
 
+  // Another way to fetch data
+  fetchHeadlinesNews(country: string): Promise<any> {
+    const url = this.endpoint +
+      'country=' + country + '&' +
+      'apiKey=' + this.key;
+    const req = new Request(url);
+    return fetch(req)
+      .then((response) => response.json());
   }
 
   setData(data: any) {
     this.data = data;
   }
- 
+
   getData(id) {
-    // return this.data[id];
     return this.search(id, this.data);
   }
 
+  // Helper function which searches for an article in the data array
   search(nameKey, myArray){
-    for (var i=0; i < myArray.length; i++) {
-        if (myArray[i].url === nameKey) {
-            return myArray[i];
-        }
+    for (const elem of myArray) {
+      if (elem.url === nameKey) {
+        return elem;
+      }
     }
+    return null; // Item not Found
 }
 
 

@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   onLogOut() {
-    console.log('LOGOUT IS CLICKED!!!!');
+    console.log('LOGOUT');
     this.authService.logout();
     this.router.navigateByUrl('/auth');
   }

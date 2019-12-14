@@ -26,7 +26,6 @@ export class HeadlinesPage implements OnInit {
   getNews() {
     this.news = this.newsService.fetchWithHttp(this.country);
     this.news.subscribe((data) => {
-      console.log(data);
       this.newsService.setData(data);
     });
   }
