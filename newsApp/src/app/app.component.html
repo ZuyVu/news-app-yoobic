@@ -2,13 +2,14 @@
 
   <ion-menu side="start">
 
-    <ion-header>
+    <!-- <ion-header>
       <ion-toolbar color="primary">
         <ion-title>News to You</ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
 
     <ion-content>
+      <ion-img src="assets/app-menu-image.png"></ion-img>
       <ion-list>
         <ion-menu-toggle>
           <ion-item line="none" routerLink="/headlines">
@@ -30,7 +31,7 @@
         </ion-menu-toggle>
         <ion-menu-toggle>
           <ion-item line="none" (click)='onClickDummyButton()' button>
-            <ion-icon name="flash" slot="start" color="primary"></ion-icon>
+            <ion-icon name="flash" slot="start" color="success"></ion-icon>
             <ion-label>More Awesome Features</ion-label>
           </ion-item>
         </ion-menu-toggle>
